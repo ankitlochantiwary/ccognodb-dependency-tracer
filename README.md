@@ -157,7 +157,7 @@ A compact walkthrough of the same flow is included in the repository:
 
 The recording covers the graph snapshot, people exploration, Python recommendations, and the 3-hop shortest-path example.
 
-## Assignment coverage
+## Coverage
 
 - Graph-backed functional web application: included.
 - Thoughtful node/relationship model and README diagram: included.
