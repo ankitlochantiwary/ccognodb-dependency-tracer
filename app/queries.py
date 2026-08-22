@@ -11,4 +11,3 @@ LEARNING_PATH = '''MATCH (p:Person {id:$person_id}), (target:Skill {name:$target
 SKILLS = '''MATCH (s:Skill) RETURN s.name AS name ORDER BY name'''
 
 SCHEMA = '''CREATE CONSTRAINT person_id IF NOT EXISTS FOR (p:Person) REQUIRE p.id IS UNIQUE'''
-'''
