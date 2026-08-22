@@ -153,7 +153,7 @@ The relationship-path flow demonstrates a graph-native 3-hop traversal across mu
 
 A compact walkthrough of the same flow is included in the repository:
 
-[▶ Watch the SkillGraph demo](docs/demo/skillgraph-demo.mp4)
+[▶ Watch the SkillGraph demo](docs/demo/video-demo.mp4)
 
 The recording covers the graph snapshot, people exploration, Python recommendations, and the 3-hop shortest-path example.
 
@@ -168,4 +168,4 @@ The recording covers the graph snapshot, people exploration, Python recommendati
 - Environment-only credentials: included.
 - Clean structure, loading/empty/error states: included.
 - Hosted deployment config: included.
-- Short screen recording / walkthrough: included under `docs/demo/skillgraph-demo.mp4`.
+- Short screen recording / walkthrough: included under `docs/demo/video-demo.mp4`.
