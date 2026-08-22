@@ -55,6 +55,11 @@ async function showPerson(id){
 
 document.getElementById('searchBtn').onclick=loadPeople;
 personSearch.addEventListener('keydown',e=>{if(e.key==='Enter')loadPeople()});
+let searchTimer;
+personSearch.addEventListener('input',()=>{
+  clearTimeout(searchTimer);
+  searchTimer=setTimeout(loadPeople,250);
+});
 
 document.getElementById('recommendBtn').onclick=async()=>{
   const skill=skillSelect.value;
