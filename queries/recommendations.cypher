@@ -1,7 +1,7 @@
-MATCH (s:Skill {name:$skill})<-[:HAS_SKILL]-(p:Person)
-OPTIONAL MATCH (p)-[:HELD]->(r:Role)-[:REQUIRES]->(s)
-WITH p, count(DISTINCT r) AS roleMatch
-MATCH (p)-[:HAS_SKILL]->(ps:Skill)
-RETURN p.id AS id, p.name AS name, p.title AS title,
-       roleMatch, collect(DISTINCT ps.name) AS skills
-ORDER BY roleMatch DESC, p.name LIMIT 12;
+MATCH (s:Skill {name: $skill})<-[:HAS_SKILL]-(p:Person)-[:HAS_ROLE]->(r:Role), (p)-[:WORKS_AT]->(c:Company)
+OPTIONAL MATCH (p)-[:BUILT]->(pr:Project)-[:USES_SKILL]->(s)
+WITH p,r,c,count(DISTINCT pr) AS project_evidence, collect(DISTINCT pr.name) AS shared_projects
+WHERE $target_role = '' OR r.name = $target_role OR EXISTS { MATCH (r)-[:REQUIRES]->(target:Skill) WHERE target.name = $skill }
+RETURN p.name AS name, r.name AS role, c.name AS company, (50 + project_evidence * 25) AS score, shared_projects
+ORDER BY score DESC, name
+LIMIT 12;

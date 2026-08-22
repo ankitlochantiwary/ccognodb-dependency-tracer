@@ -1,1 +1,42 @@
-<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>CognoDB SkillGraph</title><link rel='stylesheet' href='/static/styles.css'></head><body><main><header><div><span class='eyebrow'>GRAPH-NATIVE TALENT EXPLORER</span><h1>SkillGraph</h1><p>Explore people, skills, projects and roles as connected data.</p></div><div class='badge'>CognoDB</div></header><section class='stats'>{% for k,v in summary.items() %}<div class='stat'><strong>{{v}}</strong><span>{{k}}</span></div>{% endfor %}</section><section class='panel'><div class='section-head'><h2>People</h2><input id='search' placeholder='Search people…'></div><div id='people' class='people'></div></section><section class='panel'><div class='section-head'><h2>Explore a skill</h2><select id='skill'>{% for s in skills %}<option value='{{s.name}}'>{{s.name}}</option>{% endfor %}</select></div><div id='recommendations'></div></section><section id='profile' class='panel hidden'></section></main><script src='/static/app.js'></script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SkillGraph — Graph-powered talent explorer</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+<header class="topbar"><div class="brand"><span class="mark">S</span><span>SkillGraph</span></div><div class="subtle">CognoDB graph exploration</div></header>
+<main class="shell">
+  <section class="hero">
+    <div><p class="eyebrow">RELATIONSHIP-FIRST TALENT SEARCH</p><h1>Find people by the path between their skills, projects and roles.</h1><p class="lede">SkillGraph makes graph-native questions easy: who is close to a skill, which projects prove it, and what learning path gets someone ready for a target skill.</p></div>
+    <div class="hero-card"><div class="hero-label">Graph snapshot</div><div class="stats"><div><strong>{{ summary.people }}</strong><span>people</span></div><div><strong>{{ summary.skills }}</strong><span>skills</span></div><div><strong>{{ summary.projects }}</strong><span>projects</span></div><div><strong>{{ summary.roles }}</strong><span>roles</span></div></div></div>
+  </section>
+
+  <section class="grid two">
+    <div class="panel">
+      <div class="panel-head"><div><p class="eyebrow">EXPLORE</p><h2>People graph</h2></div><span id="peopleCount" class="pill">loading</span></div>
+      <div class="search"><input id="personSearch" placeholder="Search by name, role or skill…"><button id="searchBtn">Search</button></div>
+      <div id="peopleList" class="list"><div class="loading">Loading people…</div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-head"><div><p class="eyebrow">GRAPH QUERY</p><h2>Skill → role recommendations</h2></div></div>
+      <label>Skill</label>
+      <select id="skillSelect"><option value="">Choose a skill</option>{% for item in skills %}<option value="{{ item.name }}">{{ item.name }}</option>{% endfor %}</select>
+      <label>Target role <span class="optional">optional</span></label>
+      <input id="roleInput" placeholder="e.g. AI Engineer">
+      <button class="wide" id="recommendBtn">Find connected people</button>
+      <div id="recommendations" class="result-block"><div class="empty">Choose a skill to query the graph.</div></div>
+    </div>
+  </section>
+
+  <section class="panel path-panel">
+    <div class="panel-head"><div><p class="eyebrow">MULTI-HOP TRAVERSAL</p><h2>Learning path</h2><p class="muted">See the shortest skill chain between a person and a target skill.</p></div></div>
+    <div class="path-controls"><select id="pathPerson"><option value="">Choose a person</option></select><select id="pathSkill"><option value="">Target skill</option>{% for item in skills %}<option value="{{ item.name }}">{{ item.name }}</option>{% endfor %}</select><button id="pathBtn">Calculate path</button></div>
+    <div id="pathResult" class="result-block"><div class="empty">The result uses a variable-length graph path, not a join table.</div></div>
+  </section>
+</main>
+<script src="/static/app.js"></script>
+</body>
+</html>

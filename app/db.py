@@ -1,21 +1,24 @@
 from neo4j import GraphDatabase
-from .config import COGNODB_URI, COGNODB_USER, COGNODB_PASSWORD, validate_config
+from .config import settings
 
 _driver = None
 
 
 def get_driver():
     global _driver
-    validate_config()
     if _driver is None:
-        _driver = GraphDatabase.driver(COGNODB_URI, auth=(COGNODB_USER, COGNODB_PASSWORD))
+        if not settings.cognodb_uri or not settings.cognodb_password:
+            raise RuntimeError('CognoDB is not configured. Set COGNODB_URI and COGNODB_PASSWORD.')
+        _driver = GraphDatabase.driver(
+            settings.cognodb_uri,
+            auth=(settings.cognodb_user, settings.cognodb_password),
+        )
     return _driver
 
 
-def run_query(query, **params):
+def verify_connection():
     driver = get_driver()
-    with driver.session() as session:
-        return [record.data() for record in session.run(query, **params)]
+    driver.verify_connectivity()
 
 
 def close_driver():

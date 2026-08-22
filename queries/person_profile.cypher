@@ -1,8 +1,6 @@
-MATCH (p:Person {id:$person_id})
+MATCH (p:Person {id: $person_id})-[:HAS_ROLE]->(r:Role), (p)-[:WORKS_AT]->(c:Company)
 OPTIONAL MATCH (p)-[:HAS_SKILL]->(s:Skill)
-WITH p, collect(DISTINCT s.name) AS skills
-OPTIONAL MATCH (p)-[:WORKED_ON]->(pr:Project)
-WITH p, skills, collect(DISTINCT pr.name) AS projects
-OPTIONAL MATCH (p)-[:HELD]->(r:Role)-[:AT]->(c:Company)
-RETURN p.id AS id,p.name AS name,p.title AS title,skills,projects,
-       collect(DISTINCT {role:r.title,company:c.name}) AS roles;
+WITH p,r,c,collect(DISTINCT s.name) AS skills
+OPTIONAL MATCH (p)-[:BUILT]->(pr:Project)
+WITH p,r,c,skills,collect(DISTINCT {name: pr.name, summary: pr.summary}) AS projects
+RETURN p.id AS id, p.name AS name, p.bio AS bio, r.name AS role, c.name AS company, skills, projects;

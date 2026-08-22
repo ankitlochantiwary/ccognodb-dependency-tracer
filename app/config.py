@@ -1,17 +1,13 @@
-import os
 from dotenv import load_dotenv
-
 load_dotenv()
 
-COGNODB_URI = os.getenv('COGNODB_URI', '')
-COGNODB_USER = os.getenv('COGNODB_USER', 'cognodb')
-COGNODB_PASSWORD = os.getenv('COGNODB_PASSWORD', '')
+import os
 
+class Settings:
+    def __init__(self):
+        self.cognodb_uri = os.getenv('COGNODB_URI', '')
+        self.cognodb_user = os.getenv('COGNODB_USER', 'cognodb')
+        self.cognodb_password = os.getenv('COGNODB_PASSWORD', '')
+        self.app_title = os.getenv('APP_TITLE', 'SkillGraph')
 
-def validate_config():
-    missing = [k for k, v in {
-        'COGNODB_URI': COGNODB_URI,
-        'COGNODB_PASSWORD': COGNODB_PASSWORD,
-    }.items() if not v]
-    if missing:
-        raise RuntimeError(f'Missing environment variables: {", ".join(missing)}')
+settings = Settings()

@@ -1,8 +1,9 @@
 services:
   - type: web
-    name: cognodb-skillgraph
+    name: skillgraph
     env: docker
     plan: free
+    autoDeploy: false
     envVars:
       - key: COGNODB_URI
         sync: false
