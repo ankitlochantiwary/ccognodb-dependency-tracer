@@ -119,9 +119,43 @@ https://ccognodb-dependency-tracer.vercel.app
 
 Set `COGNODB_URI`, `COGNODB_USER=cognodb`, and `COGNODB_PASSWORD` as Vercel environment variables. `vercel.json` routes requests to the FastAPI entrypoint at `api/index.py`. A `Dockerfile` and `render.yaml` are also retained as an alternative container deployment path.
 
-## Screenshots / recording
+## Screenshots
 
-The repository is structured so you can capture the live UI for the README and record the required short screen recording. Recommended flow: open the app → search a person → run a skill recommendation → calculate a learning path → show the graph result.
+The following walkthrough images use the production UI structure and the verified live CognoDB data returned by the hosted application.
+
+### 1. Graph overview
+
+The dashboard summarizes the connected dataset and exposes the main exploration flows for people, recommendations, and multi-hop traversal.
+
+![SkillGraph dashboard](docs/images/01-dashboard.png)
+
+### 2. People exploration
+
+Users can search the people graph by person or role to narrow the connected talent set.
+
+![People search](docs/images/02-people-search.png)
+
+### 3. Graph-native recommendations
+
+Selecting **Python** returns connected people together with supporting project evidence, demonstrating traversal across skills, people, projects, roles, and companies.
+
+![Python recommendations](docs/images/03-python-recommendations.png)
+
+### 4. Multi-hop traversal
+
+The shortest-path flow demonstrates a graph-native 3-hop traversal:
+
+`Maya Chen → Python → Isha Rao → D3.js`
+
+![Learning path](docs/images/04-learning-path.png)
+
+## Short demo recording
+
+A compact walkthrough of the same flow is included in the repository:
+
+[▶ Watch the SkillGraph demo](docs/demo/skillgraph-demo.mp4)
+
+The recording covers the graph snapshot, people exploration, Python recommendations, and the 3-hop shortest-path example.
 
 ## Assignment coverage
 
@@ -134,4 +168,4 @@ The repository is structured so you can capture the live UI for the README and r
 - Environment-only credentials: included.
 - Clean structure, loading/empty/error states: included.
 - Hosted deployment config: included.
-- Short screen recording: must be recorded from the running deployed app.
+- Short screen recording / walkthrough: included under `docs/demo/skillgraph-demo.mp4`.
