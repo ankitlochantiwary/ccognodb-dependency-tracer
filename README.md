@@ -1,4 +1,4 @@
-# SkillGraph — Wexa AI CognoDB Assignment 2
+# SkillGraph
 
 SkillGraph is a small graph-powered talent explorer. It lets a non-technical user explore people, skills, projects and roles, then ask relationship-first questions such as:
 
