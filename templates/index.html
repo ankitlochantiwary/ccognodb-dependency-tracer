@@ -25,17 +25,22 @@
       <label>Skill</label>
       <select id="skillSelect"><option value="">Choose a skill</option>{% for item in skills %}<option value="{{ item.name }}">{{ item.name }}</option>{% endfor %}</select>
       <label>Target role <span class="optional">optional</span></label>
-      <input id="roleInput" placeholder="e.g. AI Engineer">
+      <input id="roleInput" placeholder="e.g. AI Engineer"><p class="muted">Optional: scores candidates by overlap with that role's required skills.</p>
       <button class="wide" id="recommendBtn">Find connected people</button>
       <div id="recommendations" class="result-block"><div class="empty">Choose a skill to query the graph.</div></div>
     </div>
   </section>
 
   <section class="panel path-panel">
-    <div class="panel-head"><div><p class="eyebrow">MULTI-HOP TRAVERSAL</p><h2>Learning path</h2><p class="muted">See the shortest skill chain between a person and a target skill.</p></div></div>
+    <div class="panel-head"><div><p class="eyebrow">MULTI-HOP TRAVERSAL</p><h2>Relationship path</h2><p class="muted">See the shortest graph connection between a person and a target skill.</p></div></div>
     <div class="path-controls"><select id="pathPerson"><option value="">Choose a person</option></select><select id="pathSkill"><option value="">Target skill</option>{% for item in skills %}<option value="{{ item.name }}">{{ item.name }}</option>{% endfor %}</select><button id="pathBtn">Calculate path</button></div>
     <div id="pathResult" class="result-block"><div class="empty">The result uses a variable-length graph path, not a join table.</div></div>
   </section>
+
+  <dialog id="profileDialog" class="profile-dialog">
+    <div class="profile-head"><div><p class="eyebrow">PERSON PROFILE</p><h2 id="profileName">Profile</h2></div><button id="profileClose" class="profile-close" aria-label="Close profile">×</button></div>
+    <div id="profileContent"></div>
+  </dialog>
 </main>
 <script src="/static/app.js"></script>
 </body>

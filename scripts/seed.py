@@ -2,9 +2,11 @@ import json
 import os
 from pathlib import Path
 from neo4j import GraphDatabase
+from dotenv import load_dotenv
 
 ROOT = Path(__file__).resolve().parent.parent
-PEOPLE = json.loads((ROOT / 'data' / 'seed.json').read_text())
+load_dotenv(ROOT / '.env')
+DATA = json.loads((ROOT / 'data' / 'seed.json').read_text(encoding='utf-8'))
 
 uri = os.getenv('COGNODB_URI')
 user = os.getenv('COGNODB_USER', 'cognodb')
@@ -12,12 +14,22 @@ password = os.getenv('COGNODB_PASSWORD')
 if not uri or not password:
     raise SystemExit('Set COGNODB_URI and COGNODB_PASSWORD before seeding.')
 
+def statements(path: Path):
+    return [part.strip() for part in path.read_text(encoding='utf-8').split(';') if part.strip()]
+
 driver = GraphDatabase.driver(uri, auth=(user, password))
-with driver.session() as session:
-    for statement in (ROOT / 'queries' / 'schema.cypher').read_text().split(';'):
-        statement = statement.strip()
-        if statement:
-            session.run(statement)
-    session.run((ROOT / 'queries' / 'seed.cypher').read_text(), people=PEOPLE['people'], roles=PEOPLE['roles'])
-    print(session.run('MATCH (n) RETURN count(n) AS count').single()['count'], 'nodes loaded')
-driver.close()
+try:
+    with driver.session() as session:
+        for statement in statements(ROOT / 'queries' / 'schema.cypher'):
+            try:
+                session.run(statement).consume()
+            except Exception as exc:
+                # Constraints improve integrity but are not required to load the demo data.
+                # Keep the seed path usable if a CognoDB version omits a DDL feature.
+                print(f'Schema warning: {exc}')
+        for statement in statements(ROOT / 'queries' / 'seed.cypher'):
+            session.run(statement, people=DATA['people'], roles=DATA['roles']).consume()
+        count = session.run('MATCH (n) RETURN count(n) AS count').single()['count']
+        print(count, 'nodes loaded')
+finally:
+    driver.close()

@@ -1,18 +1,323 @@
 {
   "people": [
-    {"id":"p1","name":"Maya Chen","bio":"Backend engineer who builds event-driven systems and data platforms.","role":"Backend Engineer","company":"Northstar Labs","skills":["Python","FastAPI","PostgreSQL","Graph Modeling","Kafka"],"skill_levels":{"Python":"advanced","FastAPI":"advanced","PostgreSQL":"advanced","Graph Modeling":"intermediate","Kafka":"advanced"},"projects":[{"id":"pr1","name":"Incident Atlas","summary":"Service dependency explorer for on-call teams."}],"project_skills":[{"project_id":"pr1","skill":"Python"},{"project_id":"pr1","skill":"Graph Modeling"},{"project_id":"pr1","skill":"Kafka"}]},
-    {"id":"p2","name":"Arjun Mehta","bio":"Full-stack developer focused on developer tools and AI-assisted workflows.","role":"Full-stack Engineer","company":"Orbit Systems","skills":["TypeScript","React","Node.js","Graph Modeling","OpenAI API"],"skill_levels":{"TypeScript":"advanced","React":"advanced","Node.js":"advanced","Graph Modeling":"intermediate","OpenAI API":"advanced"},"projects":[{"id":"pr2","name":"FlowForge","summary":"Visual workflow builder for internal developer platforms."}],"project_skills":[{"project_id":"pr2","skill":"TypeScript"},{"project_id":"pr2","skill":"React"},{"project_id":"pr2","skill":"Graph Modeling"}]},
-    {"id":"p3","name":"Sofia Alvarez","bio":"ML engineer working on recommendation and retrieval systems.","role":"ML Engineer","company":"Northstar Labs","skills":["Python","PyTorch","Embeddings","Vector Search","FastAPI"],"skill_levels":{"Python":"advanced","PyTorch":"advanced","Embeddings":"advanced","Vector Search":"advanced","FastAPI":"intermediate"},"projects":[{"id":"pr3","name":"Atlas Match","summary":"Recommendation engine for teams and expertise."}],"project_skills":[{"project_id":"pr3","skill":"Embeddings"},{"project_id":"pr3","skill":"Vector Search"},{"project_id":"pr3","skill":"Python"}]},
-    {"id":"p4","name":"Noah Williams","bio":"Platform engineer specializing in cloud reliability and distributed systems.","role":"Platform Engineer","company":"Vertex Cloud","skills":["Go","Kubernetes","AWS","Kafka","Graph Modeling"],"skill_levels":{"Go":"advanced","Kubernetes":"advanced","AWS":"advanced","Kafka":"advanced","Graph Modeling":"beginner"},"projects":[{"id":"pr4","name":"SignalMesh","summary":"Service topology and dependency graph for platform teams."}],"project_skills":[{"project_id":"pr4","skill":"Kubernetes"},{"project_id":"pr4","skill":"Kafka"},{"project_id":"pr4","skill":"Graph Modeling"}]},
-    {"id":"p5","name":"Isha Rao","bio":"Product engineer building analytics-heavy web experiences.","role":"Frontend Engineer","company":"Orbit Systems","skills":["React","TypeScript","D3.js","GraphQL","Python"],"skill_levels":{"React":"advanced","TypeScript":"advanced","D3.js":"advanced","GraphQL":"advanced","Python":"intermediate"},"projects":[{"id":"pr5","name":"Insight Grid","summary":"Interactive analytics workspace for customer operations."}],"project_skills":[{"project_id":"pr5","skill":"React"},{"project_id":"pr5","skill":"D3.js"},{"project_id":"pr5","skill":"GraphQL"}]},
-    {"id":"p6","name":"Daniel Kim","bio":"Data engineer building reliable pipelines and graph-aware data products.","role":"Data Engineer","company":"Vertex Cloud","skills":["Python","Airflow","Spark","PostgreSQL","Graph Modeling"],"skill_levels":{"Python":"advanced","Airflow":"advanced","Spark":"advanced","PostgreSQL":"advanced","Graph Modeling":"advanced"},"projects":[{"id":"pr6","name":"Lineage Lens","summary":"Data lineage explorer across ETL jobs and datasets."}],"project_skills":[{"project_id":"pr6","skill":"Graph Modeling"},{"project_id":"pr6","skill":"Python"},{"project_id":"pr6","skill":"PostgreSQL"}]}
+    {
+      "id": "p1",
+      "name": "Maya Chen",
+      "bio": "Backend engineer who builds event-driven systems and data platforms.",
+      "role": "Backend Engineer",
+      "company": "Northstar Labs",
+      "skills": [
+        "Python",
+        "FastAPI",
+        "PostgreSQL",
+        "Graph Modeling",
+        "Kafka"
+      ],
+      "skill_levels": {
+        "Python": "advanced",
+        "FastAPI": "advanced",
+        "PostgreSQL": "advanced",
+        "Graph Modeling": "intermediate",
+        "Kafka": "advanced"
+      },
+      "projects": [
+        {
+          "id": "pr1",
+          "name": "Incident Atlas",
+          "summary": "Service dependency explorer for on-call teams."
+        }
+      ],
+      "project_skills": [
+        {
+          "project_id": "pr1",
+          "skill": "Python"
+        },
+        {
+          "project_id": "pr1",
+          "skill": "Graph Modeling"
+        },
+        {
+          "project_id": "pr1",
+          "skill": "Kafka"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "name": "Arjun Mehta",
+      "bio": "Full-stack developer focused on developer tools and AI-assisted workflows.",
+      "role": "Full-stack Engineer",
+      "company": "Orbit Systems",
+      "skills": [
+        "TypeScript",
+        "React",
+        "Node.js",
+        "Graph Modeling",
+        "OpenAI API"
+      ],
+      "skill_levels": {
+        "TypeScript": "advanced",
+        "React": "advanced",
+        "Node.js": "advanced",
+        "Graph Modeling": "intermediate",
+        "OpenAI API": "advanced"
+      },
+      "projects": [
+        {
+          "id": "pr2",
+          "name": "FlowForge",
+          "summary": "Visual workflow builder for internal developer platforms."
+        }
+      ],
+      "project_skills": [
+        {
+          "project_id": "pr2",
+          "skill": "TypeScript"
+        },
+        {
+          "project_id": "pr2",
+          "skill": "React"
+        },
+        {
+          "project_id": "pr2",
+          "skill": "Graph Modeling"
+        }
+      ]
+    },
+    {
+      "id": "p3",
+      "name": "Sofia Alvarez",
+      "bio": "ML engineer working on recommendation and retrieval systems.",
+      "role": "ML Engineer",
+      "company": "Northstar Labs",
+      "skills": [
+        "Python",
+        "PyTorch",
+        "Embeddings",
+        "Vector Search",
+        "FastAPI"
+      ],
+      "skill_levels": {
+        "Python": "advanced",
+        "PyTorch": "advanced",
+        "Embeddings": "advanced",
+        "Vector Search": "advanced",
+        "FastAPI": "intermediate"
+      },
+      "projects": [
+        {
+          "id": "pr3",
+          "name": "Atlas Match",
+          "summary": "Recommendation engine for teams and expertise."
+        }
+      ],
+      "project_skills": [
+        {
+          "project_id": "pr3",
+          "skill": "Embeddings"
+        },
+        {
+          "project_id": "pr3",
+          "skill": "Vector Search"
+        },
+        {
+          "project_id": "pr3",
+          "skill": "Python"
+        }
+      ]
+    },
+    {
+      "id": "p4",
+      "name": "Noah Williams",
+      "bio": "Platform engineer specializing in cloud reliability and distributed systems.",
+      "role": "Platform Engineer",
+      "company": "Vertex Cloud",
+      "skills": [
+        "Go",
+        "Kubernetes",
+        "AWS",
+        "Kafka",
+        "Graph Modeling"
+      ],
+      "skill_levels": {
+        "Go": "advanced",
+        "Kubernetes": "advanced",
+        "AWS": "advanced",
+        "Kafka": "advanced",
+        "Graph Modeling": "beginner"
+      },
+      "projects": [
+        {
+          "id": "pr4",
+          "name": "SignalMesh",
+          "summary": "Service topology and dependency graph for platform teams."
+        }
+      ],
+      "project_skills": [
+        {
+          "project_id": "pr4",
+          "skill": "Kubernetes"
+        },
+        {
+          "project_id": "pr4",
+          "skill": "Kafka"
+        },
+        {
+          "project_id": "pr4",
+          "skill": "Graph Modeling"
+        }
+      ]
+    },
+    {
+      "id": "p5",
+      "name": "Isha Rao",
+      "bio": "Product engineer building analytics-heavy web experiences.",
+      "role": "Frontend Engineer",
+      "company": "Orbit Systems",
+      "skills": [
+        "React",
+        "TypeScript",
+        "D3.js",
+        "GraphQL",
+        "Python"
+      ],
+      "skill_levels": {
+        "React": "advanced",
+        "TypeScript": "advanced",
+        "D3.js": "advanced",
+        "GraphQL": "advanced",
+        "Python": "intermediate"
+      },
+      "projects": [
+        {
+          "id": "pr5",
+          "name": "Insight Grid",
+          "summary": "Interactive analytics workspace for customer operations."
+        }
+      ],
+      "project_skills": [
+        {
+          "project_id": "pr5",
+          "skill": "React"
+        },
+        {
+          "project_id": "pr5",
+          "skill": "D3.js"
+        },
+        {
+          "project_id": "pr5",
+          "skill": "GraphQL"
+        }
+      ]
+    },
+    {
+      "id": "p6",
+      "name": "Daniel Kim",
+      "bio": "Data engineer building reliable pipelines and graph-aware data products.",
+      "role": "Data Engineer",
+      "company": "Vertex Cloud",
+      "skills": [
+        "Python",
+        "Airflow",
+        "Spark",
+        "PostgreSQL",
+        "Graph Modeling"
+      ],
+      "skill_levels": {
+        "Python": "advanced",
+        "Airflow": "advanced",
+        "Spark": "advanced",
+        "PostgreSQL": "advanced",
+        "Graph Modeling": "advanced"
+      },
+      "projects": [
+        {
+          "id": "pr6",
+          "name": "Lineage Lens",
+          "summary": "Data lineage explorer across ETL jobs and datasets."
+        }
+      ],
+      "project_skills": [
+        {
+          "project_id": "pr6",
+          "skill": "Graph Modeling"
+        },
+        {
+          "project_id": "pr6",
+          "skill": "Python"
+        },
+        {
+          "project_id": "pr6",
+          "skill": "PostgreSQL"
+        }
+      ]
+    }
   ],
   "roles": [
-    {"name":"Backend Engineer","description":"Build APIs and distributed backend services.","skills":["Python","PostgreSQL","Kafka"]},
-    {"name":"Full-stack Engineer","description":"Ship end-to-end product features.","skills":["TypeScript","React","Node.js"]},
-    {"name":"ML Engineer","description":"Productionize machine learning and retrieval systems.","skills":["Python","PyTorch","Embeddings"]},
-    {"name":"Platform Engineer","description":"Operate reliable cloud platforms.","skills":["Kubernetes","AWS","Kafka"]},
-    {"name":"Data Engineer","description":"Design and operate data pipelines and data products.","skills":["Python","Airflow","PostgreSQL"]},
-    {"name":"AI Engineer","description":"Build production AI applications that combine models, data and services.","skills":["Python","Embeddings","FastAPI","Graph Modeling"]}
+    {
+      "name": "Backend Engineer",
+      "description": "Build APIs and distributed backend services.",
+      "skills": [
+        "Python",
+        "PostgreSQL",
+        "Kafka"
+      ]
+    },
+    {
+      "name": "Full-stack Engineer",
+      "description": "Ship end-to-end product features.",
+      "skills": [
+        "TypeScript",
+        "React",
+        "Node.js"
+      ]
+    },
+    {
+      "name": "ML Engineer",
+      "description": "Productionize machine learning and retrieval systems.",
+      "skills": [
+        "Python",
+        "PyTorch",
+        "Embeddings"
+      ]
+    },
+    {
+      "name": "Platform Engineer",
+      "description": "Operate reliable cloud platforms.",
+      "skills": [
+        "Kubernetes",
+        "AWS",
+        "Kafka"
+      ]
+    },
+    {
+      "name": "Data Engineer",
+      "description": "Design and operate data pipelines and data products.",
+      "skills": [
+        "Python",
+        "Airflow",
+        "PostgreSQL"
+      ]
+    },
+    {
+      "name": "AI Engineer",
+      "description": "Build production AI applications that combine models, data and services.",
+      "skills": [
+        "Python",
+        "Embeddings",
+        "FastAPI",
+        "Graph Modeling"
+      ]
+    },
+    {
+      "name": "Frontend Engineer",
+      "description": "Builds accessible, data-rich web interfaces.",
+      "skills": [
+        "React",
+        "TypeScript",
+        "D3.js",
+        "GraphQL"
+      ]
+    }
   ]
 }

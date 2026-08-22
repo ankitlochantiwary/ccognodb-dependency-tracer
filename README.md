@@ -1,4 +1,4 @@
-# SkillGraph
+# SkillGraph — Wexa AI CognoDB Assignment 2
 
 SkillGraph is a small graph-powered talent explorer. It lets a non-technical user explore people, skills, projects and roles, then ask relationship-first questions such as:
 
@@ -8,7 +8,7 @@ SkillGraph is a small graph-powered talent explorer. It lets a non-technical use
 
 ## Why a graph database?
 
-A relational design can store the same facts, but the interesting questions here become chains of joins across people → skills → projects → roles → companies. The graph keeps those relationships as first-class data and lets the application traverse them directly. In particular, the learning-path query uses a variable-length shortest-path traversal, which is awkward to express and maintain with a pile of relational join tables.
+A relational design can store the same facts, but the interesting questions here become chains of joins across people → skills → projects → roles → companies. The graph keeps those relationships as first-class data and lets the application traverse them directly. In particular, the relationship-path query uses a variable-length shortest-path traversal, which is awkward to express and maintain with a pile of relational join tables.
 
 ## Data model
 
@@ -89,8 +89,8 @@ Open `http://127.0.0.1:8000`.
 
 ## Main Cypher queries
 
-### Multi-hop recommendation
-`queries/recommendations.cypher` traverses `Person → HAS_SKILL → Skill` and also uses `Person → BUILT → Project → USES_SKILL → Skill` to add project evidence. That gives a graph-native recommendation signal rather than relying only on a person row containing a skill name.
+### Graph-native recommendation
+`queries/recommendations.cypher` starts from a selected skill, traverses to matching people, and uses `Person → BUILT → Project → USES_SKILL → Skill` as explicit project evidence. When an optional target role is supplied, the query also traverses `Role → REQUIRES → Skill` and scores each candidate by the share of that role's required skills they already have.
 
 ### Relationally awkward query
 `queries/learning_path.cypher` uses `shortestPath` across multiple relationship types and up to eight hops to find a path between a person and a target skill. This is the clearest demonstration that the graph is earning its place in the design.
@@ -101,7 +101,7 @@ Open `http://127.0.0.1:8000`.
 
 `GET /api/person/{person_id}` — one person's graph-expanded profile.
 
-`GET /api/skills` — skills used by the recommendation and learning-path selectors.
+`GET /api/skills` — skills used by the recommendation and relationship-path selectors.
 
 `GET /api/recommendations?skill=&target_role=` — connected people with project evidence.
 
@@ -141,13 +141,13 @@ Selecting **Python** returns connected people together with supporting project e
 
 ![Python recommendations](docs/images/03-python-recommendations.png)
 
-### 4. Multi-hop traversal
+### 4. Multi-hop relationship traversal
 
 The shortest-path flow demonstrates a graph-native 3-hop traversal:
 
 `Maya Chen → Python → Isha Rao → D3.js`
 
-![Learning path](docs/images/04-learning-path.png)
+![Relationship path](docs/images/04-learning-path.png)
 
 ## Short demo recording
 
@@ -157,7 +157,7 @@ A compact walkthrough of the same flow is included in the repository:
 
 The recording covers the graph snapshot, people exploration, Python recommendations, and the 3-hop shortest-path example.
 
-## Coverage
+## Assignment coverage
 
 - Graph-backed functional web application: included.
 - Thoughtful node/relationship model and README diagram: included.

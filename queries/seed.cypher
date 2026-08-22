@@ -8,7 +8,8 @@ MERGE (p)-[:WORKS_AT]->(c)
 WITH DISTINCT p, person
 UNWIND person.skills AS skillName
 MERGE (s:Skill {name: skillName})
-MERGE (p)-[:HAS_SKILL {level: person.skill_levels[skillName]}]->(s)
+MERGE (p)-[hs:HAS_SKILL]->(s)
+SET hs.level = person.skill_levels[skillName]
 WITH DISTINCT p, person
 UNWIND person.projects AS proj
 MERGE (pr:Project {id: proj.id})
