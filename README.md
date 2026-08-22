@@ -121,33 +121,33 @@ Set `COGNODB_URI`, `COGNODB_USER=cognodb`, and `COGNODB_PASSWORD` as Vercel envi
 
 ## Screenshots
 
-The following walkthrough images use the production UI structure and the verified live CognoDB data returned by the hosted application.
+The screenshots below are current captures from the deployed SkillGraph application connected to the live CognoDB dataset.
 
 ### 1. Graph overview
 
-The dashboard summarizes the connected dataset and exposes the main exploration flows for people, recommendations, and multi-hop traversal.
+The dashboard summarizes the live graph with **6 people, 19 skills, 6 projects, and 7 roles**, and exposes the people-search, recommendation, and multi-hop traversal flows.
 
 ![SkillGraph dashboard](docs/images/01-dashboard.png)
 
-### 2. People exploration
+### 2. People search
 
-Users can search the people graph by person or role to narrow the connected talent set.
+Searching for **Isha** narrows the people graph to **Isha Rao**, a Frontend Engineer at Orbit Systems with 5 connected skills. This demonstrates that the people search now filters the graph-backed result set correctly.
 
-![People search](docs/images/02-people-search.png)
+![People search for Isha Rao](docs/images/02-people-search.png)
 
-### 3. Graph-native recommendations
+### 3. Skill recommendations with project evidence
 
-Selecting **Python** returns connected people together with supporting project evidence, demonstrating traversal across skills, people, projects, roles, and companies.
+Selecting **React** returns connected candidates and explains the evidence behind each result. Arjun Mehta is supported by **FlowForge**, while Isha Rao is supported by **Insight Grid**. Because no target role is supplied in this screenshot, the percentage shown is the graph-connectivity score rather than a target-role-fit score.
 
-![Python recommendations](docs/images/03-python-recommendations.png)
+![React skill recommendations with project evidence](docs/images/03-react-recommendations.png)
 
 ### 4. Multi-hop relationship traversal
 
-The shortest-path flow demonstrates a graph-native 3-hop traversal:
+The relationship-path flow demonstrates a graph-native 3-hop traversal across multiple node and relationship types:
 
-`Maya Chen → Python → Isha Rao → D3.js`
+`Isha Rao → TypeScript → Arjun Mehta → OpenAI API`
 
-![Relationship path](docs/images/04-learning-path.png)
+![Three-hop relationship path](docs/images/04-relationship-path.png)
 
 ## Short demo recording
 
